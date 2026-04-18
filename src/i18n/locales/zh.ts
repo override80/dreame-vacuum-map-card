@@ -42,6 +42,7 @@ export const zh: Translation = {
     pause: '暂停',
     resume: '继续',
     stop: '停止',
+    stop_and_dock: '停止并回充',
     dock: '回充',
   },
 
@@ -57,6 +58,7 @@ export const zh: Translation = {
     starting_full_clean: '开始全屋清洁',
     pausing_vacuum: '扫地机器人已暂停',
     stopping_vacuum: '扫地机器人已停止',
+    stopping_and_docking: '停止并返回基站',
     vacuum_docking: '扫地机正在返回基站',
     starting_room_clean: '开始清洁选中的 {{count}} 个房间',
     starting_room_clean_plural: '开始清洁选中的 {{count}} 个房间',

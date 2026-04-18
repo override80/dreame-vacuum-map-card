@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import type { Hass, CleaningMode, Zone } from '../types/homeassistant';
+import type { Hass, CleaningMode, Zone, StopAction } from '../types/homeassistant';
 import { useTranslation } from './useTranslation';
 import { convertUIZoneToVacuumZone } from '../utils/zoneConverter';
 
@@ -28,12 +28,19 @@ export function useVacuumServices({ hass, entityId, mapEntityId, onSuccess }: Va
     onSuccess?.(t('toast.pausing_vacuum'));
   }, [hass, entityId, onSuccess, t]);
 
-  const handleStop = useCallback(() => {
-    console.debug('[Vacuum] Stop and return to base', entityId);
-    hass.callService('vacuum', 'stop', { entity_id: entityId });
-    hass.callService('vacuum', 'return_to_base', { entity_id: entityId });
-    onSuccess?.(t('toast.stopping_vacuum'));
-  }, [hass, entityId, onSuccess, t]);
+  const handleStop = useCallback(
+    (action: StopAction = 'stop') => {
+      console.debug('[Vacuum] Stop', { action, entityId });
+      hass.callService('vacuum', 'stop', { entity_id: entityId });
+      if (action === 'stop_and_dock') {
+        hass.callService('vacuum', 'return_to_base', { entity_id: entityId });
+        onSuccess?.(t('toast.stopping_and_docking'));
+      } else {
+        onSuccess?.(t('toast.stopping_vacuum'));
+      }
+    },
+    [hass, entityId, onSuccess, t]
+  );
 
   const handleDock = useCallback(() => {
     console.debug('[Vacuum] Return to dock', entityId);

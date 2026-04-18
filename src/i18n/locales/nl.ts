@@ -42,6 +42,7 @@ export const nl: Translation = {
     pause: 'Pauze',
     resume: 'Hervatten',
     stop: 'Stop',
+    stop_and_dock: 'Stop & Docken',
     dock: 'Docken',
   },
 
@@ -57,6 +58,7 @@ export const nl: Translation = {
     starting_full_clean: 'Start volledige reiniging van het huis',
     pausing_vacuum: 'Stofzuiger pauzeren',
     stopping_vacuum: 'Stofzuiger stoppen',
+    stopping_and_docking: 'Stoppen en terugkeren naar dock',
     vacuum_docking: 'Stofzuiger keert terug naar dock',
     starting_room_clean: 'Start reinigen van {{count}} geselecteerde kamer',
     starting_room_clean_plural: 'Start reinigen van {{count}} geselecteerde kamers',

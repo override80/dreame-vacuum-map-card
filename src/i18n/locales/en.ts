@@ -40,6 +40,7 @@ export const en = {
     pause: 'Pause',
     resume: 'Resume',
     stop: 'Stop',
+    stop_and_dock: 'Stop & Dock',
     dock: 'Dock',
   },
 
@@ -55,6 +56,7 @@ export const en = {
     starting_full_clean: 'Starting full house cleaning',
     pausing_vacuum: 'Pausing vacuum',
     stopping_vacuum: 'Stopping vacuum',
+    stopping_and_docking: 'Stopping and returning to dock',
     vacuum_docking: 'Vacuum returning to dock',
     starting_room_clean: 'Starting cleaning for {{count}} selected room',
     starting_room_clean_plural: 'Starting cleaning for {{count}} selected rooms',

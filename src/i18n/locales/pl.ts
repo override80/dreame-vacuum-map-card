@@ -1,4 +1,6 @@
-export const pl = {
+import type { Translation } from './en';
+
+export const pl: Translation = {
   // Room Selector
   room_selector: {
     title: 'Wybierz pokoje',
@@ -40,6 +42,7 @@ export const pl = {
     pause: 'Pauza',
     resume: 'Wznów',
     stop: 'Zatrzymaj',
+    stop_and_dock: 'Zatrzymaj i wróć',
     dock: 'Baza',
   },
 
@@ -55,6 +58,7 @@ export const pl = {
     starting_full_clean: 'Rozpoczynanie sprzątania całego domu',
     pausing_vacuum: 'Wstrzymywanie odkurzacza',
     stopping_vacuum: 'Zatrzymywanie odkurzacza',
+    stopping_and_docking: 'Zatrzymywanie i powrót do bazy',
     vacuum_docking: 'Odkurzacz wraca do bazy',
     starting_room_clean: 'Rozpoczynanie sprzątania {{count}} wybranego pokoju',
     starting_room_clean_plural: 'Rozpoczynanie sprzątania {{count}} wybranych pokojów',

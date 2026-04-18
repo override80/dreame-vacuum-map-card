@@ -42,6 +42,7 @@ export const he: Translation = {
     pause: 'השהה',
     resume: 'המשך',
     stop: 'עצור',
+    stop_and_dock: 'עצור וחזור',
     dock: 'עמדת טעינה',
   },
 
@@ -57,6 +58,7 @@ export const he: Translation = {
     starting_full_clean: 'מתחיל ניקוי של כל הבית',
     pausing_vacuum: 'משהה שואב',
     stopping_vacuum: 'עוצר שואב',
+    stopping_and_docking: 'עוצר וחוזר לתחנה',
     vacuum_docking: 'השואב חוזר לעמדת טעינה',
     starting_room_clean: 'מתחיל ניקוי עבור חדר {{count}} שנבחר',
     starting_room_clean_plural: 'מתחיל ניקוי עבור {{count}} חדרים שנבחרו',

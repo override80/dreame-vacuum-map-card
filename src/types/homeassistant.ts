@@ -57,6 +57,7 @@ export interface HassConfig {
   language?: 'en' | 'de' | 'ru' | 'pl' | 'it' | 'nl' | 'es' | 'zh' | 'he';
   default_mode?: CleaningMode;
   default_room_view?: RoomViewMode;
+  buttons?: ButtonConfig[];
 }
 
 export interface HassUnitSystem {
@@ -82,6 +83,14 @@ export interface Hass {
 export type CleaningMode = 'room' | 'all' | 'zone';
 export type CleaningStrategy = 'CleanGenius' | 'Custom';
 export type RoomViewMode = 'map' | 'list';
+
+// Button configuration types
+export type StopAction = 'stop' | 'stop_and_dock';
+
+export interface ButtonConfig {
+  type: 'stop'; // Extensible for future button types
+  action: StopAction;
+}
 
 export interface RoomPosition {
   id: number;

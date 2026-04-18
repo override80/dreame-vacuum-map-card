@@ -1,5 +1,5 @@
-import type { CleaningMode } from '../../types/homeassistant';
-import { useTranslation } from '../../hooks';
+import type { CleaningMode, StopAction } from '../../types/homeassistant';
+import { useTranslation, useButtonConfig } from '../../hooks';
 import { CleanButton, PauseButton, ResumeButton, StopButton, DockButton } from './components';
 import './ActionButtons.scss';
 
@@ -12,7 +12,7 @@ interface ActionButtonsProps {
   onClean: () => void;
   onPause: () => void;
   onResume: () => void;
-  onStop: () => void;
+  onStop: (action: StopAction) => void;
   onDock: () => void;
 }
 
@@ -29,6 +29,8 @@ export function ActionButtons({
   onDock,
 }: ActionButtonsProps) {
   const { t, getRoomCountTranslation } = useTranslation();
+  const { getStopAction } = useButtonConfig();
+  const stopAction = getStopAction();
 
   const getCleanButtonText = (): string => {
     switch (selectedMode) {
@@ -45,12 +47,14 @@ export function ActionButtons({
 
   const cleanButtonText = getCleanButtonText();
 
+  const handleStop = () => onStop(stopAction);
+
   // Running state - show pause and stop
   if (isRunning && !isPaused && !isDocked) {
     return (
       <div className="action-buttons">
         <PauseButton onClick={onPause} />
-        <StopButton onClick={onStop} />
+        <StopButton onClick={handleStop} action={stopAction} />
       </div>
     );
   }
@@ -60,7 +64,7 @@ export function ActionButtons({
     return (
       <div className="action-buttons">
         <ResumeButton onClick={onResume} />
-        <StopButton onClick={onStop} />
+        <StopButton onClick={handleStop} action={stopAction} />
       </div>
     );
   }

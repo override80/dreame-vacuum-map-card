@@ -42,6 +42,7 @@ export const ru: Translation = {
     pause: 'Пауза',
     resume: 'Продолжить',
     stop: 'Стоп',
+    stop_and_dock: 'Стоп и на базу',
     dock: 'Возврат на базу',
   },
 
@@ -57,6 +58,7 @@ export const ru: Translation = {
     starting_full_clean: 'Начинается полная уборка дома',
     pausing_vacuum: 'Приостановка пылесоса',
     stopping_vacuum: 'Остановка пылесоса',
+    stopping_and_docking: 'Остановка и возврат на базу',
     vacuum_docking: 'Пылесос возвращается на базу',
     starting_room_clean: 'Начало уборки {{count}} выбранной комнаты',
     starting_room_clean_plural: 'Начало уборки {{count}} выбранных комнат',

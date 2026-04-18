@@ -43,6 +43,7 @@ export const de: Translation = {
     pause: 'Pause',
     resume: 'Fortsetzen',
     stop: 'Stopp',
+    stop_and_dock: 'Stopp & Andocken',
     dock: 'Andocken',
   },
 
@@ -58,6 +59,7 @@ export const de: Translation = {
     starting_full_clean: 'Vollständige Hausreinigung gestartet',
     pausing_vacuum: 'Saugroboter wird pausiert',
     stopping_vacuum: 'Saugroboter wird gestoppt',
+    stopping_and_docking: 'Stoppen und zur Basis zurückkehren',
     vacuum_docking: 'Saugroboter kehrt zur Station zurück',
     starting_room_clean: 'Reinigung für {{count}} ausgewählten Raum wird gestartet',
     starting_room_clean_plural: 'Reinigung für {{count}} ausgewählte Räume wird gestartet',

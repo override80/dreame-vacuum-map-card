@@ -82,20 +82,10 @@ theme: light # Optional, 'light' (default), 'dark', or 'custom'
 language: en # Optional, 'en' (default) or 'de'
 default_mode: all # Optional, 'all' (default), 'room', or 'zone'
 default_room_view: map # Optional, 'map' (default) or 'list'
+buttons: # Optional
+  - type: stop # Only stop button is supported
+    action: stop # 'stop' (default), 'stop_and_dock'
 ```
-
-## Configuration
-
-| Name                | Type   | Default      | Description                                                                |
-| ------------------- | ------ | ------------ | -------------------------------------------------------------------------- |
-| `entity`            | string | **Required** | Entity ID of your Dreame vacuum                                            |
-| `title`             | string | Optional     | Custom title for the card                                                  |
-| `map_entity`        | string | Optional     | Camera entity for the vacuum map (defaults to `camera.${ENTITY_NAME}_map`) |
-| `theme`             | string | `light`      | Theme mode: `light`, `dark`, or `custom`                                   |
-| `custom_theme`      | object | Optional     | Custom theme configuration (see [Theming](#theming))                       |
-| `language`          | string | `en`         | Language: `en`, `de`, `ru`, `pl`, `it`, `nl`, `es`, `zh`, `he`             |
-| `default_mode`      | string | `all`        | Default tab to display: `all`, `room`, or `zone`                           |
-| `default_room_view` | string | `map`        | Default room selection view: `map` (interactive) or `list` (scrollable)    |
 
 ## Theming
 

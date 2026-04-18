@@ -42,6 +42,7 @@ export const it: Translation = {
     pause: 'Pausa',
     resume: 'Riprendi',
     stop: 'Stop',
+    stop_and_dock: 'Stop e rientra',
     dock: 'Rientra alla base',
   },
 
@@ -57,6 +58,7 @@ export const it: Translation = {
     starting_full_clean: 'Avvio pulizia completa della casa',
     pausing_vacuum: 'Messa in pausa del robot',
     stopping_vacuum: 'Arresto del robot',
+    stopping_and_docking: 'Arresto e rientro alla base',
     vacuum_docking: 'Il robot sta rientrando alla base',
     starting_room_clean: 'Avvio pulizia per {{count}} stanza selezionata',
     starting_room_clean_plural: 'Avvio pulizia per {{count}} stanze selezionate',
