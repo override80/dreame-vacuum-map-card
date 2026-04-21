@@ -6,8 +6,13 @@
   align-items: center;
   gap: 0.5rem;
 
-  &:hover {
+  &:hover:not(&--disabled) {
     transform: translateY(-0.125rem);
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
   }
 
   &__circle {

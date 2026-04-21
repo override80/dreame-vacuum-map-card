@@ -152,7 +152,7 @@ export function DreameVacuumCard({ hass, config }: DreameVacuumCardProps) {
             onShortcutsClick={() => setShortcutsModalOpened(true)}
             onRepeatClick={cycleRepeatCount}
             repeatCount={repeatCount}
-            disabled={getAttr(entity.attributes.started, false)}
+            disabled={isRunning}
           />
 
           <div className="dreame-vacuum-card__controls">
@@ -179,7 +179,7 @@ export function DreameVacuumCard({ hass, config }: DreameVacuumCardProps) {
           </div>
         </div>
 
-        <CleaningModeModal opened={modalOpened} onClose={() => setModalOpened(false)} />
+        <CleaningModeModal opened={modalOpened} onClose={() => setModalOpened(false)} isRunning={isRunning} />
 
         <ShortcutsModal opened={shortcutsModalOpened} onClose={() => setShortcutsModalOpened(false)} />
 

@@ -29,6 +29,8 @@ interface CustomModeProps {
   selfCleanTimeMin: number;
   selfCleanTimeMax: number;
   baseEntityId: string;
+  /** When true, disables settings that cannot be changed while cleaning */
+  isRunning?: boolean;
 }
 
 export function CustomMode({
@@ -50,6 +52,7 @@ export function CustomMode({
   selfCleanTimeMin,
   selfCleanTimeMax,
   baseEntityId,
+  isRunning = false,
 }: CustomModeProps) {
   const hass = useHass();
   const { setSelectOption, setSwitch, setNumber } = useHomeAssistantServices(hass);
@@ -120,17 +123,20 @@ export function CustomMode({
         />
       </section>
 
-      <section className="cleaning-mode-modal__section">
-        <div className="cleaning-mode-modal__section-header">
-          <h3 className="cleaning-mode-modal__section-title">{t('custom_mode.route_title')}</h3>
-        </div>
-        <RouteSelector
-          cleaningRoute={cleaningRoute}
-          cleaningRouteList={cleaningRouteList}
-          onSelect={setSelectOption}
-          entityId={entityIds.cleaningRoute}
-        />
-      </section>
+      {cleaningRouteList.length > 0 && (
+        <section className="cleaning-mode-modal__section">
+          <div className="cleaning-mode-modal__section-header">
+            <h3 className="cleaning-mode-modal__section-title">{t('custom_mode.route_title')}</h3>
+          </div>
+          <RouteSelector
+            cleaningRoute={cleaningRoute}
+            cleaningRouteList={cleaningRouteList}
+            onSelect={setSelectOption}
+            entityId={entityIds.cleaningRoute}
+            disabled={isRunning}
+          />
+        </section>
+      )}
     </div>
   );
 }

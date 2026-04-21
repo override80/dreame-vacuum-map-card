@@ -17,6 +17,8 @@ interface CleanGeniusModeProps {
   cleangeniusModeList: string[];
   cleangenius: string;
   baseEntityId: string;
+  /** When true, disables settings that cannot be changed while cleaning */
+  isRunning?: boolean;
 }
 
 export function CleanGeniusMode({
@@ -24,6 +26,7 @@ export function CleanGeniusMode({
   cleangeniusModeList,
   cleangenius,
   baseEntityId,
+  isRunning = false,
 }: CleanGeniusModeProps) {
   const hass = useHass();
   const { setSelectOption } = useHomeAssistantServices(hass);
@@ -51,7 +54,9 @@ export function CleanGeniusMode({
     <div className="cleaning-mode-modal__content">
       <section className="cleaning-mode-modal__section">
         <h3 className="cleaning-mode-modal__section-title">{t('cleangenius_mode.cleaning_mode_title')}</h3>
-        <div className="cleaning-mode-modal__mode-grid">
+        <div
+          className={`cleaning-mode-modal__mode-grid ${isRunning ? 'cleaning-mode-modal__mode-grid--disabled' : ''}`}
+        >
           {cleangeniusModeList.map((mode, idx) => {
             const typedMode = mode as CleanGeniusModeType;
             const isVacMop = mode === 'Vacuum and mop';
@@ -60,9 +65,11 @@ export function CleanGeniusMode({
                 key={idx}
                 className={`cleaning-mode-modal__mode-card ${
                   mode === cleangeniusMode ? 'cleaning-mode-modal__mode-card--selected' : ''
-                }`}
-                onClick={() => setSelectOption(entityIds.cleangeniusMode, convertCleanGeniusModeToService(typedMode))}
-                style={{ cursor: 'pointer' }}
+                } ${isRunning ? 'cleaning-mode-modal__mode-card--disabled' : ''}`}
+                onClick={() =>
+                  !isRunning && setSelectOption(entityIds.cleangeniusMode, convertCleanGeniusModeToService(typedMode))
+                }
+                style={{ cursor: isRunning ? 'not-allowed' : 'pointer' }}
               >
                 <div
                   className={`cleaning-mode-modal__mode-icon cleaning-mode-modal__mode-icon--${isVacMop ? 'vac-mop' : 'mop-after'}`}
@@ -81,9 +88,13 @@ export function CleanGeniusMode({
         </div>
       </section>
 
-      <div className="cleaning-mode-modal__setting">
+      <div className={`cleaning-mode-modal__setting ${isRunning ? 'cleaning-mode-modal__setting--disabled' : ''}`}>
         <span className="cleaning-mode-modal__setting-label">{t('cleangenius_mode.deep_cleaning')}</span>
-        <Toggle checked={cleangenius === CLEANGENIUS_STATE.DEEP_CLEANING} onChange={handleDeepCleaningToggle} />
+        <Toggle
+          checked={cleangenius === CLEANGENIUS_STATE.DEEP_CLEANING}
+          onChange={handleDeepCleaningToggle}
+          disabled={isRunning}
+        />
       </div>
     </div>
   );

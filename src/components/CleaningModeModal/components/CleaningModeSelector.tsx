@@ -10,6 +10,7 @@ interface CleaningModeSelectorProps {
   onSelect: (entityId: string, value: string) => void;
   entityId: string;
   t?: TranslateFunction;
+  disabled?: boolean;
 }
 
 export function CleaningModeSelector({
@@ -18,15 +19,16 @@ export function CleaningModeSelector({
   onSelect,
   entityId,
   t,
+  disabled = false,
 }: CleaningModeSelectorProps) {
   return (
-    <div className="cleaning-mode-modal__power-grid">
+    <div className={`cleaning-mode-modal__power-grid ${disabled ? 'cleaning-mode-modal__power-grid--disabled' : ''}`}>
       {cleaningModeList.map((mode, idx) => (
         <div key={idx} className="cleaning-mode-modal__mode-option">
           <CircularButton
             size="small"
             selected={mode === cleaningMode}
-            onClick={() => onSelect(entityId, convertCleaningModeToService(mode as CleaningMode))}
+            onClick={() => !disabled && onSelect(entityId, convertCleaningModeToService(mode as CleaningMode))}
             icon={getCleaningModeIcon(mode as CleaningMode)}
           />
           <span className="cleaning-mode-modal__mode-option-label">

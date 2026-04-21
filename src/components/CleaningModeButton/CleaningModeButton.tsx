@@ -19,6 +19,7 @@ interface CleaningModeButtonProps {
   onShortcutsClick?: () => void;
   onRepeatClick?: () => void;
   repeatCount?: RepeatCount;
+  /** Disables secondary buttons (repeat, shortcuts) but keeps main button clickable */
   disabled?: boolean;
 }
 
@@ -85,11 +86,7 @@ export function CleaningModeButton({
 
   return (
     <div className="cleaning-mode-button-wrapper">
-      <button
-        onClick={onClick}
-        className={`cleaning-mode-button ${disabled ? 'cleaning-mode-button--disabled' : ''}`}
-        disabled={disabled}
-      >
+      <button onClick={onClick} className="cleaning-mode-button">
         <div className="cleaning-mode-button__content">
           <span className="cleaning-mode-button__icon">{getIcon(cleaningMode)}</span>
           <span className="cleaning-mode-button__text">
@@ -103,7 +100,7 @@ export function CleaningModeButton({
       </button>
       {onRepeatClick && (
         <button
-          className="cleaning-mode-button-wrapper__repeats"
+          className={`cleaning-mode-button-wrapper__repeats ${disabled ? 'cleaning-mode-button-wrapper__repeats--disabled' : ''}`}
           onClick={handleRepeatClick}
           title={t('cleaning_mode_button.repeats_tooltip')}
           disabled={disabled}
@@ -113,7 +110,7 @@ export function CleaningModeButton({
       )}
       {cleangenius === 'Off' && onShortcutsClick && (
         <button
-          className="cleaning-mode-button-wrapper__shortcuts"
+          className={`cleaning-mode-button-wrapper__shortcuts ${disabled ? 'cleaning-mode-button-wrapper__shortcuts--disabled' : ''}`}
           onClick={handleShortcutsClick}
           title={t('cleaning_mode_button.view_shortcuts')}
           disabled={disabled}
