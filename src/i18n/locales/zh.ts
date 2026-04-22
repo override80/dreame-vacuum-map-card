@@ -7,6 +7,11 @@ export const zh: Translation = {
     selected_count: '已选 {{count}} 个',
   },
 
+  // Map Selector (地图选择器)
+  map_selector: {
+    unknown: '未知地图',
+  },
+
   // Vacuum Map (建图与地图交互)
   vacuum_map: {
     no_map: '暂无地图',

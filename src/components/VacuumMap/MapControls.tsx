@@ -28,6 +28,7 @@ export function MapControls({
 }: MapControlsProps) {
   const { t } = useTranslation();
   const isMapView = viewMode === 'map';
+  const isListView = viewMode === 'list';
   const viewLabel = isMapView ? t('vacuum_map.switch_to_list') : t('vacuum_map.switch_to_map');
   const ViewIcon = isMapView ? List : Map;
   const lockLabel = isMapLocked ? t('vacuum_map.unlock_map') : t('vacuum_map.lock_map');
@@ -40,7 +41,7 @@ export function MapControls({
           <ViewIcon size={18} />
         </button>
       )}
-      {showZoomControls && !isMapLocked && (
+      {showZoomControls && !isMapLocked && !isListView && (
         <>
           <button
             className="map-controls__button"
@@ -68,14 +69,16 @@ export function MapControls({
           </button>
         </>
       )}
-      <button
-        className={`map-controls__button map-controls__button--lock${isMapLocked ? ' map-controls__button--locked' : ''}`}
-        onClick={onToggleLock}
-        aria-label={lockLabel}
-        title={lockLabel}
-      >
-        <LockIcon size={16} />
-      </button>
+      {!isListView && (
+        <button
+          className={`map-controls__button map-controls__button--lock${isMapLocked ? ' map-controls__button--locked' : ''}`}
+          onClick={onToggleLock}
+          aria-label={lockLabel}
+          title={lockLabel}
+        >
+          <LockIcon size={16} />
+        </button>
+      )}
     </div>
   );
 }

@@ -7,6 +7,11 @@ export const ru: Translation = {
     selected_count: '{{count}} выбрано',
   },
 
+  // Map Selector
+  map_selector: {
+    unknown: 'Неизвестная карта',
+  },
+
   // Vacuum Map
   vacuum_map: {
     no_map: 'Нет доступной карты',

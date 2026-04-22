@@ -7,6 +7,11 @@ export const he: Translation = {
     selected_count: '{{count}} נבחרו',
   },
 
+  // בחירת מפה
+  map_selector: {
+    unknown: 'מפה לא ידועה',
+  },
+
   // מפת שואב
   vacuum_map: {
     no_map: 'אין מפה זמינה',

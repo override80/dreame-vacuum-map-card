@@ -7,6 +7,11 @@ export const es: Translation = {
     selected_count: '{{count}} seleccionadas',
   },
 
+  // Map Selector
+  map_selector: {
+    unknown: 'Mapa desconocido',
+  },
+
   // Vacuum Map
   vacuum_map: {
     no_map: 'No hay mapa disponible',

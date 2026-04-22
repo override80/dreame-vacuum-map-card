@@ -5,6 +5,7 @@
 @use './components/common/SegmentedControl/SegmentedControl.scss';
 @use './components/common/Toast/Toast.scss';
 @use './components/Header/Header.scss';
+@use './components/MapSelector/MapSelector.scss';
 @use './components/ModeTabs/ModeTabs.scss';
 @use './components/ActionButtons/ActionButtons.scss';
 @use './components/CleaningModeButton/CleaningModeButton.scss';
@@ -19,7 +20,6 @@
 @use './components/SettingsPanel/sections/CarpetSettingsSection.scss';
 @use './components/SettingsPanel/sections/ConsumablesSection.scss';
 @use './components/SettingsPanel/sections/DeviceInfoSection.scss';
-@use './components/SettingsPanel/sections/MapManagementSection.scss';
 @use './components/SettingsPanel/sections/QuickSettingsSection.scss';
 @use './components/SettingsPanel/sections/StationControlsSection.scss';
 @use './components/SettingsPanel/sections/VolumeSection.scss';

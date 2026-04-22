@@ -4,11 +4,10 @@ import { AIDetectionSection } from './sections/AIDetectionSection';
 import { CarpetSettingsSection } from './sections/CarpetSettingsSection';
 import { ConsumablesSection } from './sections/ConsumablesSection';
 import { DeviceInfoSection } from './sections/DeviceInfoSection';
-import { MapManagementSection } from './sections/MapManagementSection';
 import { QuickSettingsSection } from './sections/QuickSettingsSection';
 import { StationControlsSection } from './sections/StationControlsSection';
 import { VolumeSection } from './sections/VolumeSection';
-import { Brain, Gauge, Info, Layers, Map, Settings2, Volume2, Home } from 'lucide-react';
+import { Brain, Gauge, Info, Layers, Settings2, Volume2, Home } from 'lucide-react';
 import './SettingsPanel.scss';
 
 interface SettingsPanelProps {
@@ -32,10 +31,6 @@ export function SettingsPanel({ opened, onClose }: SettingsPanelProps) {
 
             <Accordion title={t('settings.device_info.title')} icon={<Info />}>
               <DeviceInfoSection />
-            </Accordion>
-
-            <Accordion title={t('settings.map_management.title')} icon={<Map />}>
-              <MapManagementSection />
             </Accordion>
 
             <Accordion title={t('settings.volume.title')} icon={<Volume2 />}>

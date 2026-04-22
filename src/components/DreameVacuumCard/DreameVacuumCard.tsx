@@ -1,4 +1,5 @@
 import { Header } from '../Header';
+import { MapSelector } from '../MapSelector';
 import { CleaningModeButton } from '../CleaningModeButton';
 import { VacuumMap } from '../VacuumMap';
 import { ModeTabs } from '../ModeTabs';
@@ -142,6 +143,8 @@ export function DreameVacuumCard({ hass, config }: DreameVacuumCardProps) {
       >
         <div className="dreame-vacuum-card__container">
           <Header deviceName={deviceName} onSettingsClick={() => setSettingsPanelOpened(true)} />
+
+          <MapSelector />
 
           <VacuumMap
             mapEntityId={finalMapEntityId}

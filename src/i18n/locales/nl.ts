@@ -7,6 +7,11 @@ export const nl: Translation = {
     selected_count: '{{count}} geselecteerd',
   },
 
+  // Kaart Kiezer
+  map_selector: {
+    unknown: 'Onbekende kaart',
+  },
+
   // Stofzuiger Kaart
   vacuum_map: {
     no_map: 'Geen kaart beschikbaar',

@@ -3,6 +3,7 @@
 .header {
   padding: 1.25rem 1.25rem 0.625rem;
   text-align: center;
+  padding-bottom: unset;
 
   &__top {
     display: flex;
@@ -102,6 +103,7 @@
 
   &__stat-icon {
     display: flex;
+    color: var(--accent-color);
 
     &--cleaning-time,
     &--area {

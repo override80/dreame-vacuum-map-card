@@ -5,6 +5,11 @@ export const en = {
     selected_count: '{{count}} selected',
   },
 
+  // Map Selector
+  map_selector: {
+    unknown: 'Unknown Map',
+  },
+
   // Vacuum Map
   vacuum_map: {
     no_map: 'No map available',
