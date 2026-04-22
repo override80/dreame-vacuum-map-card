@@ -200,7 +200,6 @@ For more examples and complete theming documentation, see [THEMING.md](THEMING.m
 
 The card supports per-room customized cleaning settings, allowing you to configure different suction levels, wetness, and cleaning cycles for each room.
 
-
 ## Internationalization (i18n)
 
 The card supports multiple languages. Currently available:
@@ -213,6 +212,8 @@ The card supports multiple languages. Currently available:
 - **Dutch (nl)** - Nederlands
 - **Spanish (es)** - Español
 - **Chinese (zh)** - 中文
+- **French (fr)** - Français
+- **Korean (ko)** - 한국인
 - **Hebrew (he)** - עברית (RTL supported)
 
 Set the language in your configuration:
