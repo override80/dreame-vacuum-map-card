@@ -1,4 +1,4 @@
-import { Map, List, Plus, Minus, Maximize2, Lock, LockOpen } from 'lucide-react';
+import { Map, List, Plus, Minus, RotateCcw, Lock, LockOpen } from 'lucide-react';
 import type { RoomViewMode } from '../../types/homeassistant';
 import { useTranslation } from '../../hooks';
 import './MapControls.scss';
@@ -64,7 +64,7 @@ export function MapControls({
             aria-label={t('vacuum_map.zoom_reset')}
             title={t('vacuum_map.zoom_reset')}
           >
-            <Maximize2 size={16} />
+            <RotateCcw size={16} />
           </button>
         </>
       )}
