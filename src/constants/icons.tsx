@@ -31,6 +31,7 @@ import {
   Pause,
   StepForward,
   OctagonX,
+  SlidersHorizontal,
 } from 'lucide-react';
 
 // Header
@@ -114,3 +115,6 @@ export const CLEANING_ROUTE_STANDARD_ICON_SVG = <Route />;
 export const CLEANING_ROUTE_INTENSIVE_ICON_SVG = <Shell />;
 
 export const CLEANING_ROUTE_DEEP_ICON_SVG = <WavesArrowDown />;
+
+// Customize mode icon
+export const CUSTOMIZE_ICON_SVG = <SlidersHorizontal />;

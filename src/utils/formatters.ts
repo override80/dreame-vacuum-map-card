@@ -18,6 +18,8 @@ export function getCleaningModeFriendlyName(mode: CleaningMode, t?: TranslateFun
         return t('cleaning_mode_button.vacuum');
       case CLEANING_MODE.MOPPING:
         return t('cleaning_mode_button.mop');
+      case CLEANING_MODE.CUSTOMIZE:
+        return t('customize.title');
       default:
         return mode;
     }
@@ -32,6 +34,8 @@ export function getCleaningModeFriendlyName(mode: CleaningMode, t?: TranslateFun
       return 'Vac';
     case CLEANING_MODE.MOPPING:
       return 'Mop';
+    case CLEANING_MODE.CUSTOMIZE:
+      return 'Customize';
     default:
       return mode;
   }

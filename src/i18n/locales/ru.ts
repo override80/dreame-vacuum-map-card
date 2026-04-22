@@ -116,6 +116,23 @@ export const ru: Translation = {
     route_title: 'Маршрут',
   },
 
+  // Customize Cleaning Mode
+  customize: {
+    title: 'Настроить',
+    description: 'Установите персонализированные настройки всасывания и влажности для каждой зоны.',
+    set_button: 'Установить',
+    vacuum: 'Пылесос',
+    mop: 'Швабра',
+    vac_and_mop: 'Пылесос и швабра',
+    cycles: 'Циклы',
+    apply_to_all: 'Применить ко всем комнатам',
+    click_room_hint: 'Нажмите на зону, чтобы изменить режим.',
+    intelligent_recommendation: 'Умная рекомендация',
+    select_room: 'Выберите комнату',
+    settings_for: 'Настройки {{room}}',
+    no_rooms: 'Комнаты не найдены',
+  },
+
   // CleanGenius Mode
   cleangenius_mode: {
     cleaning_mode_title: 'Режим уборки',

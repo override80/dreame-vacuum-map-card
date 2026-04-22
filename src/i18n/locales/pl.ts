@@ -115,6 +115,23 @@ export const pl: Translation = {
     route_title: 'Trasa',
   },
 
+  // Customize Cleaning Mode
+  customize: {
+    title: 'Dostosuj',
+    description: 'Ustaw spersonalizowane preferencje ssania i mopowania dla każdego obszaru.',
+    set_button: 'Ustaw',
+    vacuum: 'Odkurzaj',
+    mop: 'Mopuj',
+    vac_and_mop: 'Odkurzaj i mopuj',
+    cycles: 'Cykle',
+    apply_to_all: 'Zastosuj do wszystkich pomieszczeń',
+    click_room_hint: 'Kliknij obszar, aby zmienić tryb.',
+    intelligent_recommendation: 'Inteligentna rekomendacja',
+    select_room: 'Wybierz pokój',
+    settings_for: 'Ustawienia {{room}}',
+    no_rooms: 'Brak dostępnych pokoi',
+  },
+
   // CleanGenius Mode
   cleangenius_mode: {
     cleaning_mode_title: 'Tryb sprzątania',

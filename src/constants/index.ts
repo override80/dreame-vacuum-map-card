@@ -74,6 +74,7 @@ export const CLEANING_MODE = {
   MOPPING: 'Mopping',
   SWEEPING_AND_MOPPING: 'Sweeping and mopping',
   MOPPING_AFTER_SWEEPING: 'Mopping after sweeping',
+  CUSTOMIZE: 'Customize',
 } as const;
 
 // CleanGenius modes
@@ -96,6 +97,7 @@ export const SERVICE_VALUE = {
     MOPPING: 'mopping',
     SWEEPING_AND_MOPPING: 'sweeping_and_mopping',
     MOPPING_AFTER_SWEEPING: 'mopping_after_sweeping',
+    CUSTOMIZE: 'customize',
   },
   CLEANGENIUS_MODE: {
     VACUUM_AND_MOP: 'vacuum_and_mop',
@@ -169,6 +171,35 @@ export const UI = {
 // LocalStorage keys
 export const STORAGE_KEY = {
   MAP_LOCKED: 'dreame-vacuum-map-locked',
+  CUSTOMIZE_CONFIG: 'dreame-vacuum-card:customize_config',
+} as const;
+
+// Customize cleaning mode constants
+export const CUSTOMIZE_CLEANING_MODE = {
+  VACUUM: 0,
+  MOP: 1,
+  VAC_AND_MOP: 2,
+} as const;
+
+export const CUSTOMIZE_SUCTION_LEVEL = {
+  QUIET: 0,
+  STANDARD: 1,
+  STRONG: 2,
+  TURBO: 3,
+} as const;
+
+export const CUSTOMIZE_MOP_WETNESS = {
+  SLIGHTLY_DRY: 1,
+  STANDARD: 2,
+  WET: 3,
+} as const;
+
+// Default customize room config
+export const CUSTOMIZE_DEFAULTS = {
+  CLEANING_MODE: CUSTOMIZE_CLEANING_MODE.VAC_AND_MOP,
+  SUCTION_LEVEL: CUSTOMIZE_SUCTION_LEVEL.STANDARD,
+  MOP_WETNESS: CUSTOMIZE_MOP_WETNESS.STANDARD,
+  CYCLES: 1,
 } as const;
 
 // Default values

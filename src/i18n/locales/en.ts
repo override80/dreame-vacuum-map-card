@@ -113,6 +113,23 @@ export const en = {
     route_title: 'Route',
   },
 
+  // Customize Cleaning Mode
+  customize: {
+    title: 'Customize',
+    description: 'Set personalized suction and mopping preferences for each area.',
+    set_button: 'Set',
+    vacuum: 'Vacuum',
+    mop: 'Mop',
+    vac_and_mop: 'Vac & Mop',
+    cycles: 'Cycles',
+    apply_to_all: 'Apply to All Rooms',
+    click_room_hint: 'Click the single area to change the mode.',
+    intelligent_recommendation: 'Intelligent Recommendation',
+    select_room: 'Select Room',
+    settings_for: '{{room}} Settings',
+    no_rooms: 'No rooms available',
+  },
+
   // CleanGenius Mode
   cleangenius_mode: {
     cleaning_mode_title: 'Cleaning Mode',

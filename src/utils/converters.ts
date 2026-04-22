@@ -16,6 +16,8 @@ export function convertCleaningModeToService(mode: CleaningMode): string {
       return SERVICE_VALUE.CLEANING_MODE.SWEEPING_AND_MOPPING;
     case CLEANING_MODE.MOPPING_AFTER_SWEEPING:
       return SERVICE_VALUE.CLEANING_MODE.MOPPING_AFTER_SWEEPING;
+    case CLEANING_MODE.CUSTOMIZE:
+      return SERVICE_VALUE.CLEANING_MODE.CUSTOMIZE;
     default:
       return mode;
   }

@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import type { Hass, CleaningMode, Zone, StopAction } from '../types/homeassistant';
+import type { RoomCleaningConfig } from '../types/vacuum';
 import { useTranslation } from './useTranslation';
 import { convertUIZoneToVacuumZone } from '../utils/zoneConverter';
 
@@ -62,6 +63,46 @@ export function useVacuumServices({ hass, entityId, mapEntityId, onSuccess }: Va
     [hass, entityId, onSuccess, t]
   );
 
+  /**
+   * Clean segments with per-room configuration (for Customize mode)
+   * Sends arrays of per-room settings to the Dreame vacuum service
+   */
+  const handleCleanSegmentsCustomized = useCallback(
+    (roomConfigs: RoomCleaningConfig[]) => {
+      if (roomConfigs.length === 0) {
+        console.debug('[Vacuum] No room configs provided');
+        return;
+      }
+
+      const segments = roomConfigs.map((c) => c.roomId);
+      const repeats = roomConfigs.map((c) => c.cycles);
+      const suctionLevels = roomConfigs.map((c) => c.suctionLevel);
+      const waterVolumes = roomConfigs.map((c) => c.mopWetness);
+
+      console.debug('[Vacuum] Clean segments with custom config', {
+        entityId,
+        segments,
+        repeats,
+        suctionLevels,
+        waterVolumes,
+        roomConfigs,
+      });
+
+      hass.callService('dreame_vacuum', 'vacuum_clean_segment', {
+        entity_id: entityId,
+        segments,
+        repeats,
+        suction_level: suctionLevels,
+        water_volume: waterVolumes,
+      });
+
+      const count = roomConfigs.length;
+      const key = count === 1 ? 'toast.starting_room_clean' : 'toast.starting_room_clean_plural';
+      onSuccess?.(t(key, { count: String(count) }));
+    },
+    [hass, entityId, onSuccess, t]
+  );
+
   const handleCleanZone = useCallback(
     (zone: Zone, imageWidth: number, imageHeight: number, repeats: number = 1) => {
       const mapEntity = hass.states[mapEntityId];
@@ -97,7 +138,8 @@ export function useVacuumServices({ hass, entityId, mapEntityId, onSuccess }: Va
       selectedZone: Zone | null,
       imageWidth?: number,
       imageHeight?: number,
-      repeats: number = 1
+      repeats: number = 1,
+      roomConfigs?: RoomCleaningConfig[]
     ) => {
       console.debug('[Vacuum] Handle clean', {
         mode,
@@ -106,15 +148,33 @@ export function useVacuumServices({ hass, entityId, mapEntityId, onSuccess }: Va
         imageWidth,
         imageHeight,
         repeats,
+        customizeMode: !!roomConfigs,
       });
 
       switch (mode) {
         case 'all':
-          handleStart();
+          // If customize mode with room configs, clean all rooms with customized settings
+          if (roomConfigs && roomConfigs.length > 0) {
+            handleCleanSegmentsCustomized(roomConfigs);
+          } else {
+            handleStart();
+          }
           break;
         case 'room':
           if (selectedRooms.size > 0) {
-            handleCleanSegments(Array.from(selectedRooms.keys()), selectedRooms.size, repeats);
+            // If customize mode with room configs, use customized settings
+            if (roomConfigs && roomConfigs.length > 0) {
+              // Filter configs to only selected rooms
+              const selectedConfigs = roomConfigs.filter((c) => selectedRooms.has(c.roomId));
+              if (selectedConfigs.length > 0) {
+                handleCleanSegmentsCustomized(selectedConfigs);
+              } else {
+                // Fallback to standard cleaning if no configs match
+                handleCleanSegments(Array.from(selectedRooms.keys()), selectedRooms.size, repeats);
+              }
+            } else {
+              handleCleanSegments(Array.from(selectedRooms.keys()), selectedRooms.size, repeats);
+            }
           } else {
             console.debug('[Vacuum] No rooms selected');
             onSuccess?.(t('toast.select_rooms_first'));
@@ -133,7 +193,7 @@ export function useVacuumServices({ hass, entityId, mapEntityId, onSuccess }: Va
           break;
       }
     },
-    [handleStart, handleCleanSegments, handleCleanZone, onSuccess, t]
+    [handleStart, handleCleanSegments, handleCleanSegmentsCustomized, handleCleanZone, onSuccess, t]
   );
 
   return {
@@ -142,6 +202,7 @@ export function useVacuumServices({ hass, entityId, mapEntityId, onSuccess }: Va
     handleStop,
     handleDock,
     handleCleanSegments,
+    handleCleanSegmentsCustomized,
     handleCleanZone,
     handleClean,
   };

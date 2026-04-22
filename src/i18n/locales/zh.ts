@@ -115,6 +115,23 @@ export const zh: Translation = {
     route_title: '路径设置',
   },
 
+  // 定制清洁模式
+  customize: {
+    title: '定制',
+    description: '为每个区域设置个性化的吸力和拖地偏好。',
+    set_button: '设置',
+    vacuum: '吸尘',
+    mop: '拖地',
+    vac_and_mop: '吸拖',
+    cycles: '清扫次数',
+    apply_to_all: '应用到所有房间',
+    click_room_hint: '点击区域以更改模式。',
+    intelligent_recommendation: '智能推荐',
+    select_room: '选择房间',
+    settings_for: '{{room}}设置',
+    no_rooms: '没有可用的房间',
+  },
+
   // CleanGenius Mode (智能托管模式)
   cleangenius_mode: {
     cleaning_mode_title: '清洁模式',

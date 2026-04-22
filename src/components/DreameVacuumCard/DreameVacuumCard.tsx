@@ -14,7 +14,7 @@ import { isRtlLanguage } from '../../i18n';
 import { VacuumCardProvider } from '../../contexts';
 import type { Hass, HassConfig } from '../../types/homeassistant';
 import type { SupportedLanguage } from '../../i18n/locales';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import './DreameVacuumCard.scss';
 
 interface DreameVacuumCardProps {
@@ -62,6 +62,12 @@ export function DreameVacuumCard({ hass, config }: DreameVacuumCardProps) {
     resetRepeatCount,
   } = useVacuumCardState({ defaultMode: config.default_mode });
 
+  // Get map entity ID
+  const mapEntityId = config.map_entity || `camera.${config.entity.split('.')[1]}_map`;
+
+  // Read customized_cleaning from entity attributes
+  const isCustomizedCleaning = entity ? getAttr(entity.attributes.customized_cleaning, false) : false;
+
   // Reset repeat count when vacuum stops running
   const isRunning = entity ? getAttr(entity.attributes.running, false) : false;
   useEffect(() => {
@@ -77,21 +83,24 @@ export function DreameVacuumCard({ hass, config }: DreameVacuumCardProps) {
   const { handlePause, handleStop, handleDock, handleClean } = useVacuumServices({
     hass,
     entityId: config.entity,
-    mapEntityId: config.map_entity || `camera.${config.entity.split('.')[1]}_map`,
+    mapEntityId,
     onSuccess: showToast,
   });
 
   // Handle room toggle with toast
-  const handleRoomToggleWithToast = (roomId: number, roomName: string) => {
-    const wasSelected = selectedRooms.has(roomId);
-    handleRoomToggle(roomId, roomName);
-    showToast(
-      wasSelected ? t('toast.deselected_room', { name: roomName }) : t('toast.selected_room', { name: roomName })
-    );
-  };
+  const handleRoomToggleWithToast = useCallback(
+    (roomId: number, roomName: string) => {
+      const wasSelected = selectedRooms.has(roomId);
+      handleRoomToggle(roomId, roomName);
+      showToast(
+        wasSelected ? t('toast.deselected_room', { name: roomName }) : t('toast.selected_room', { name: roomName })
+      );
+    },
+    [selectedRooms, handleRoomToggle, showToast, t]
+  );
 
   // Handle clean action
-  const handleCleanAction = () => {
+  const handleCleanAction = useCallback(() => {
     handleClean(
       selectedMode,
       selectedRooms,
@@ -100,7 +109,7 @@ export function DreameVacuumCard({ hass, config }: DreameVacuumCardProps) {
       imageDimensions?.height,
       repeatCount
     );
-  };
+  }, [selectedMode, selectedRooms, selectedZone, imageDimensions, repeatCount, handleClean]);
 
   // Handle resume (just calls start)
   const handleResume = () => {
@@ -119,7 +128,9 @@ export function DreameVacuumCard({ hass, config }: DreameVacuumCardProps) {
     return <div className="dreame-vacuum-card__error">{t('errors.failed_to_load')}</div>;
   }
 
-  const { deviceName, mapEntityId } = entityData;
+  const { deviceName, mapEntityId: extractedMapEntityId } = entityData;
+  // Use extracted mapEntityId if available, otherwise use the one we computed
+  const finalMapEntityId = extractedMapEntityId || mapEntityId;
   const effectiveMode = getEffectiveCleaningMode(entity, selectedMode);
 
   return (
@@ -133,7 +144,7 @@ export function DreameVacuumCard({ hass, config }: DreameVacuumCardProps) {
           <Header deviceName={deviceName} onSettingsClick={() => setSettingsPanelOpened(true)} />
 
           <VacuumMap
-            mapEntityId={mapEntityId}
+            mapEntityId={finalMapEntityId}
             selectedMode={selectedMode}
             selectedRooms={selectedRooms}
             onRoomToggle={handleRoomToggleWithToast}
@@ -153,6 +164,7 @@ export function DreameVacuumCard({ hass, config }: DreameVacuumCardProps) {
             onRepeatClick={cycleRepeatCount}
             repeatCount={repeatCount}
             disabled={isRunning}
+            customizeModeEnabled={isCustomizedCleaning}
           />
 
           <div className="dreame-vacuum-card__controls">

@@ -25,6 +25,7 @@ import {
   MOP_WASHING_FREQUENCY_BY_AREA_ICON_SVG,
   MOP_WASHING_FREQUENCY_BY_TIME_ICON_SVG,
   MOP_WASHING_FREQUENCY_BY_ROOM_ICON_SVG,
+  CUSTOMIZE_ICON_SVG,
 } from '../constants';
 import type { CleaningMode, CleanGeniusMode, SuctionLevel, CleaningRoute, SelfCleanFrequency } from '../types/vacuum';
 
@@ -38,6 +39,8 @@ export function getCleaningModeIcon(mode: CleaningMode): ReactElement | string {
       return VACUUM_MOP_ICON_SVG;
     case CLEANING_MODE.MOPPING_AFTER_SWEEPING:
       return MOP_AFTER_VACUUM_ICON_SVG;
+    case CLEANING_MODE.CUSTOMIZE:
+      return CUSTOMIZE_ICON_SVG;
     default:
       return '';
   }

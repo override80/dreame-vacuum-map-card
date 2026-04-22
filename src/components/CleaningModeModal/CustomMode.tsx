@@ -31,6 +31,10 @@ interface CustomModeProps {
   baseEntityId: string;
   /** When true, disables settings that cannot be changed while cleaning */
   isRunning?: boolean;
+  /** Custom handler for cleaning mode selection (used for Customize mode) */
+  onCleaningModeSelect?: (entityId: string, value: string) => void;
+  /** When true, only show the cleaning mode selector (used when Customize is selected) */
+  showOnlyCleaningModeSelector?: boolean;
 }
 
 export function CustomMode({
@@ -53,11 +57,16 @@ export function CustomMode({
   selfCleanTimeMax,
   baseEntityId,
   isRunning = false,
+  onCleaningModeSelect,
+  showOnlyCleaningModeSelector = false,
 }: CustomModeProps) {
   const hass = useHass();
   const { setSelectOption, setSwitch, setNumber } = useHomeAssistantServices(hass);
   const entityIds = useVacuumEntityIds(baseEntityId);
   const { t } = useTranslation();
+
+  // Use custom handler if provided, otherwise use default setSelectOption
+  const handleCleaningModeSelect = onCleaningModeSelect || setSelectOption;
 
   return (
     <div className="cleaning-mode-modal__content">
@@ -66,76 +75,82 @@ export function CustomMode({
         <CleaningModeSelector
           cleaningMode={cleaningMode}
           cleaningModeList={cleaningModeList}
-          onSelect={setSelectOption}
+          onSelect={handleCleaningModeSelect}
           entityId={entityIds.cleaningMode}
           t={t}
+          customizeSelected={showOnlyCleaningModeSelector}
         />
       </section>
 
-      <section className="cleaning-mode-modal__section">
-        <h3 className="cleaning-mode-modal__section-title">{t('custom_mode.suction_power_title')}</h3>
-        <SuctionPowerSelector
-          suctionLevel={suctionLevel}
-          suctionLevelList={suctionLevelList}
-          maxSuctionPower={maxSuctionPower}
-          onSelectSuctionLevel={setSelectOption}
-          onToggleMaxPower={setSwitch}
-          suctionLevelEntityId={entityIds.suctionLevel}
-          maxSuctionPowerEntityId={entityIds.maxSuctionPower}
-          maxPlusDescription={t('custom_mode.max_plus_description')}
-          t={t}
-        />
-      </section>
+      {/* Only show these sections when not in customize mode */}
+      {!showOnlyCleaningModeSelector && (
+        <>
+          <section className="cleaning-mode-modal__section">
+            <h3 className="cleaning-mode-modal__section-title">{t('custom_mode.suction_power_title')}</h3>
+            <SuctionPowerSelector
+              suctionLevel={suctionLevel}
+              suctionLevelList={suctionLevelList}
+              maxSuctionPower={maxSuctionPower}
+              onSelectSuctionLevel={setSelectOption}
+              onToggleMaxPower={setSwitch}
+              suctionLevelEntityId={entityIds.suctionLevel}
+              maxSuctionPowerEntityId={entityIds.maxSuctionPower}
+              maxPlusDescription={t('custom_mode.max_plus_description')}
+              t={t}
+            />
+          </section>
 
-      {cleaningMode !== CLEANING_MODE.SWEEPING && (
-        <section className="cleaning-mode-modal__section">
-          <h3 className="cleaning-mode-modal__section-title">{t('custom_mode.wetness_title')}</h3>
-          <WetnessSlider
-            wetnessLevel={wetnessLevel}
-            mopPadHumidity={mopPadHumidity}
-            onChangeWetness={setNumber}
-            entityId={entityIds.wetnessLevel}
-            slightlyDryLabel={t('custom_mode.slightly_dry')}
-            moistLabel={t('custom_mode.moist')}
-            wetLabel={t('custom_mode.wet')}
-          />
-        </section>
-      )}
+          {cleaningMode !== CLEANING_MODE.SWEEPING && (
+            <section className="cleaning-mode-modal__section">
+              <h3 className="cleaning-mode-modal__section-title">{t('custom_mode.wetness_title')}</h3>
+              <WetnessSlider
+                wetnessLevel={wetnessLevel}
+                mopPadHumidity={mopPadHumidity}
+                onChangeWetness={setNumber}
+                entityId={entityIds.wetnessLevel}
+                slightlyDryLabel={t('custom_mode.slightly_dry')}
+                moistLabel={t('custom_mode.moist')}
+                wetLabel={t('custom_mode.wet')}
+              />
+            </section>
+          )}
 
-      <section className="cleaning-mode-modal__section">
-        <h3 className="cleaning-mode-modal__section-title">{t('custom_mode.mop_washing_frequency_title')}</h3>
-        <MopWashingFrequency
-          selfCleanFrequency={selfCleanFrequency}
-          selfCleanFrequencyList={selfCleanFrequencyList}
-          selfCleanArea={selfCleanArea}
-          selfCleanAreaMin={selfCleanAreaMin}
-          selfCleanAreaMax={selfCleanAreaMax}
-          selfCleanTime={selfCleanTime}
-          selfCleanTimeMin={selfCleanTimeMin}
-          selfCleanTimeMax={selfCleanTimeMax}
-          onSelectFrequency={setSelectOption}
-          onChangeArea={setNumber}
-          onChangeTime={setNumber}
-          frequencyEntityId={entityIds.selfCleanFrequency}
-          areaEntityId={entityIds.selfCleanArea}
-          timeEntityId={entityIds.selfCleanTime}
-          t={t}
-        />
-      </section>
+          <section className="cleaning-mode-modal__section">
+            <h3 className="cleaning-mode-modal__section-title">{t('custom_mode.mop_washing_frequency_title')}</h3>
+            <MopWashingFrequency
+              selfCleanFrequency={selfCleanFrequency}
+              selfCleanFrequencyList={selfCleanFrequencyList}
+              selfCleanArea={selfCleanArea}
+              selfCleanAreaMin={selfCleanAreaMin}
+              selfCleanAreaMax={selfCleanAreaMax}
+              selfCleanTime={selfCleanTime}
+              selfCleanTimeMin={selfCleanTimeMin}
+              selfCleanTimeMax={selfCleanTimeMax}
+              onSelectFrequency={setSelectOption}
+              onChangeArea={setNumber}
+              onChangeTime={setNumber}
+              frequencyEntityId={entityIds.selfCleanFrequency}
+              areaEntityId={entityIds.selfCleanArea}
+              timeEntityId={entityIds.selfCleanTime}
+              t={t}
+            />
+          </section>
 
-      {cleaningRouteList.length > 0 && (
-        <section className="cleaning-mode-modal__section">
-          <div className="cleaning-mode-modal__section-header">
-            <h3 className="cleaning-mode-modal__section-title">{t('custom_mode.route_title')}</h3>
-          </div>
-          <RouteSelector
-            cleaningRoute={cleaningRoute}
-            cleaningRouteList={cleaningRouteList}
-            onSelect={setSelectOption}
-            entityId={entityIds.cleaningRoute}
-            disabled={isRunning}
-          />
-        </section>
+          {cleaningRouteList.length > 0 && (
+            <section className="cleaning-mode-modal__section">
+              <div className="cleaning-mode-modal__section-header">
+                <h3 className="cleaning-mode-modal__section-title">{t('custom_mode.route_title')}</h3>
+              </div>
+              <RouteSelector
+                cleaningRoute={cleaningRoute}
+                cleaningRouteList={cleaningRouteList}
+                onSelect={setSelectOption}
+                entityId={entityIds.cleaningRoute}
+                disabled={isRunning}
+              />
+            </section>
+          )}
+        </>
       )}
     </div>
   );

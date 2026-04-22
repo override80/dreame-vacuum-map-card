@@ -115,6 +115,23 @@ export const nl: Translation = {
     route_title: 'Route',
   },
 
+  // Aanpassen Schoonmaakmodus
+  customize: {
+    title: 'Aanpassen',
+    description: 'Stel gepersonaliseerde zuig- en dweilvoorkeuren in voor elk gebied.',
+    set_button: 'Instellen',
+    vacuum: 'Zuigen',
+    mop: 'Dweilen',
+    vac_and_mop: 'Zuigen & dweilen',
+    cycles: 'Cycli',
+    apply_to_all: 'Toepassen op alle kamers',
+    click_room_hint: 'Klik op een gebied om de modus te wijzigen.',
+    intelligent_recommendation: 'Intelligente aanbeveling',
+    select_room: 'Selecteer kamer',
+    settings_for: '{{room}} instellingen',
+    no_rooms: 'Geen kamers beschikbaar',
+  },
+
   // CleanGenius Modus
   cleangenius_mode: {
     cleaning_mode_title: 'Schoonmaakmodus',

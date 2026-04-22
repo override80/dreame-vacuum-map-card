@@ -115,6 +115,23 @@ export const he: Translation = {
     route_title: 'מסלול',
   },
 
+  // מצב התאמה אישית
+  customize: {
+    title: 'התאמה אישית',
+    description: 'הגדר העדפות שאיבה וניגוב מותאמות אישית לכל אזור.',
+    set_button: 'הגדר',
+    vacuum: 'שואב',
+    mop: 'מנגב',
+    vac_and_mop: 'שואב ומנגב',
+    cycles: 'מחזורים',
+    apply_to_all: 'החל על כל החדרים',
+    click_room_hint: 'לחץ על אזור כדי לשנות את המצב.',
+    intelligent_recommendation: 'המלצה חכמה',
+    select_room: 'בחר חדר',
+    settings_for: 'הגדרות {{room}}',
+    no_rooms: 'אין חדרים זמינים',
+  },
+
   // מצב CleanGenius
   cleangenius_mode: {
     cleaning_mode_title: 'מצב ניקוי',

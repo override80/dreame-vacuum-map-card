@@ -116,6 +116,23 @@ export const es: Translation = {
     route_title: 'Ruta',
   },
 
+  // Customize Cleaning Mode
+  customize: {
+    title: 'Personalizar',
+    description: 'Establece preferencias personalizadas de succión y fregado para cada área.',
+    set_button: 'Configurar',
+    vacuum: 'Aspirar',
+    mop: 'Fregar',
+    vac_and_mop: 'Aspirar y fregar',
+    cycles: 'Ciclos',
+    apply_to_all: 'Aplicar a todas las habitaciones',
+    click_room_hint: 'Haz clic en un área para cambiar el modo.',
+    intelligent_recommendation: 'Recomendación inteligente',
+    select_room: 'Seleccionar habitación',
+    settings_for: 'Ajustes de {{room}}',
+    no_rooms: 'No hay habitaciones disponibles',
+  },
+
   // CleanGenius Mode
   cleangenius_mode: {
     cleaning_mode_title: 'Modo de limpieza',
