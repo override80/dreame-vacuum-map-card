@@ -29,6 +29,7 @@ export const SERVICE_DOMAIN = {
   NUMBER: 'number',
   VACUUM: 'vacuum',
   DREAME_VACUUM: 'dreame_vacuum',
+  BUTTON: 'button',
 } as const;
 
 // Service actions
@@ -40,6 +41,7 @@ export const SERVICE_ACTION = {
   START: 'start',
   RETURN_TO_BASE: 'return_to_base',
   VACUUM_CLEAN_SEGMENT: 'vacuum_clean_segment',
+  PRESS: 'press',
 } as const;
 
 // Entity name suffixes
@@ -55,6 +57,15 @@ export const ENTITY_SUFFIX = {
   SELF_CLEAN_FREQUENCY: 'self_clean_frequency',
   SELF_CLEAN_AREA: 'self_clean_area',
   SELF_CLEAN_TIME: 'self_clean_time',
+} as const;
+
+// Station button entity suffixes
+export const STATION_BUTTON_SUFFIX = {
+  SELF_CLEAN: 'self_clean',
+  MANUAL_DRYING: 'manual_drying',
+  WATER_TANK_DRAINING: 'water_tank_draining',
+  BASE_STATION_CLEANING: 'base_station_cleaning',
+  EMPTY_WATER_TANK: 'empty_water_tank',
 } as const;
 
 // Cleaning modes

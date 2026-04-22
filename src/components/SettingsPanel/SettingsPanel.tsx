@@ -6,8 +6,9 @@ import { ConsumablesSection } from './sections/ConsumablesSection';
 import { DeviceInfoSection } from './sections/DeviceInfoSection';
 import { MapManagementSection } from './sections/MapManagementSection';
 import { QuickSettingsSection } from './sections/QuickSettingsSection';
+import { StationControlsSection } from './sections/StationControlsSection';
 import { VolumeSection } from './sections/VolumeSection';
-import { Brain, Gauge, Info, Layers, Map, Settings2, Volume2 } from 'lucide-react';
+import { Brain, Gauge, Info, Layers, Map, Settings2, Volume2, Home } from 'lucide-react';
 import './SettingsPanel.scss';
 
 interface SettingsPanelProps {
@@ -43,6 +44,10 @@ export function SettingsPanel({ opened, onClose }: SettingsPanelProps) {
 
             <Accordion title={t('settings.quick_settings.title')} icon={<Settings2 />}>
               <QuickSettingsSection />
+            </Accordion>
+
+            <Accordion title={t('settings.station_controls.title')} icon={<Home />}>
+              <StationControlsSection />
             </Accordion>
 
             <Accordion title={t('settings.carpet.title')} icon={<Layers />}>

@@ -250,5 +250,18 @@ export const es: Translation = {
       fill_light: 'Luz de relleno',
       fill_light_desc: 'Usar luz de relleno para mejor detección',
     },
+    station_controls: {
+      title: 'Controles de estación',
+      self_clean: 'Autolimpieza',
+      self_clean_desc: 'Iniciar ciclo de lavado de mopa',
+      manual_drying: 'Secado manual',
+      manual_drying_desc: 'Iniciar ciclo de secado de mopa',
+      water_tank_draining: 'Vaciar tanque',
+      water_tank_draining_desc: 'Drenar agua sucia del tanque',
+      base_station_cleaning: 'Limpiar estación',
+      base_station_cleaning_desc: 'Limpiar la estación base',
+      empty_water_tank: 'Vaciar tanque de agua',
+      empty_water_tank_desc: 'Vaciar el tanque de recolección de agua',
+    },
   },
 };

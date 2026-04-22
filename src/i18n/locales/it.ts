@@ -250,5 +250,18 @@ export const it: Translation = {
       fill_light: 'Luce di riempimento',
       fill_light_desc: 'Usa la luce di riempimento per un rilevamento migliore',
     },
+    station_controls: {
+      title: 'Controlli stazione',
+      self_clean: 'Autopulizia',
+      self_clean_desc: 'Avvia il ciclo di lavaggio del panno',
+      manual_drying: 'Asciugatura manuale',
+      manual_drying_desc: 'Avvia il ciclo di asciugatura del panno',
+      water_tank_draining: 'Svuota serbatoio',
+      water_tank_draining_desc: "Scarica l'acqua sporca dal serbatoio",
+      base_station_cleaning: 'Pulisci stazione',
+      base_station_cleaning_desc: 'Pulisci la stazione base',
+      empty_water_tank: 'Svuota serbatoio acqua',
+      empty_water_tank_desc: "Svuota il serbatoio di raccolta dell'acqua",
+    },
   },
 };

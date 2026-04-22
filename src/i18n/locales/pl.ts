@@ -249,5 +249,18 @@ export const pl: Translation = {
       fill_light: 'Doświetlenie',
       fill_light_desc: 'Użyj światła pomocniczego dla lepszego wykrywania',
     },
+    station_controls: {
+      title: 'Sterowanie stacją',
+      self_clean: 'Samooczyszczanie',
+      self_clean_desc: 'Rozpocznij cykl mycia mopa',
+      manual_drying: 'Ręczne suszenie',
+      manual_drying_desc: 'Rozpocznij cykl suszenia mopa',
+      water_tank_draining: 'Opróżnij zbiornik',
+      water_tank_draining_desc: 'Odprowadź brudną wodę ze zbiornika',
+      base_station_cleaning: 'Wyczyść stację',
+      base_station_cleaning_desc: 'Oczyść stację bazową',
+      empty_water_tank: 'Opróżnij zbiornik wody',
+      empty_water_tank_desc: 'Opróżnij zbiornik na wodę',
+    },
   },
 };

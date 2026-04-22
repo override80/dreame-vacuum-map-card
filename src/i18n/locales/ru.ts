@@ -250,5 +250,18 @@ export const ru: Translation = {
       fill_light: 'Подсветка',
       fill_light_desc: 'Использовать подсветку для лучшего распознавания',
     },
+    station_controls: {
+      title: 'Управление станцией',
+      self_clean: 'Самоочистка',
+      self_clean_desc: 'Запустить цикл мытья салфетки',
+      manual_drying: 'Ручная сушка',
+      manual_drying_desc: 'Запустить цикл сушки салфетки',
+      water_tank_draining: 'Слив воды',
+      water_tank_draining_desc: 'Слить грязную воду из бака',
+      base_station_cleaning: 'Очистка станции',
+      base_station_cleaning_desc: 'Очистить базовую станцию',
+      empty_water_tank: 'Опустошить бак',
+      empty_water_tank_desc: 'Опустошить бак для сбора воды',
+    },
   },
 };

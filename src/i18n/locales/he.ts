@@ -249,5 +249,18 @@ export const he: Translation = {
       fill_light: 'תאורת עזר',
       fill_light_desc: 'שימוש בתאורת עזר לזיהוי טוב יותר',
     },
+    station_controls: {
+      title: 'בקרת תחנה',
+      self_clean: 'ניקוי עצמי',
+      self_clean_desc: 'התחל מחזור שטיפת מטלית',
+      manual_drying: 'ייבוש ידני',
+      manual_drying_desc: 'התחל מחזור ייבוש מטלית',
+      water_tank_draining: 'ריקון מיכל מים',
+      water_tank_draining_desc: 'נקז מים מלוכלכים מהמיכל',
+      base_station_cleaning: 'ניקוי תחנה',
+      base_station_cleaning_desc: 'נקה את תחנת הבסיס',
+      empty_water_tank: 'רוקן מיכל מים',
+      empty_water_tank_desc: 'רוקן את מיכל איסוף המים',
+    },
   },
 };

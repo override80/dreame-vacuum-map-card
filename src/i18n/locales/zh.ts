@@ -249,5 +249,18 @@ export const zh: Translation = {
       fill_light: '自动补光灯',
       fill_light_desc: '暗光环境下自动开启以提升识别率',
     },
+    station_controls: {
+      title: '基站控制',
+      self_clean: '自动清洗',
+      self_clean_desc: '启动拖布清洗程序',
+      manual_drying: '手动烘干',
+      manual_drying_desc: '启动拖布烘干程序',
+      water_tank_draining: '排水',
+      water_tank_draining_desc: '排出污水箱中的脏水',
+      base_station_cleaning: '清洁基站',
+      base_station_cleaning_desc: '清洁充电基站',
+      empty_water_tank: '清空水箱',
+      empty_water_tank_desc: '清空集水箱',
+    },
   },
 };

@@ -247,6 +247,19 @@ export const en = {
       fill_light: 'Fill Light',
       fill_light_desc: 'Use fill light for better detection',
     },
+    station_controls: {
+      title: 'Station Controls',
+      self_clean: 'Self Clean',
+      self_clean_desc: 'Start mop pad washing cycle',
+      manual_drying: 'Manual Drying',
+      manual_drying_desc: 'Start mop pad drying cycle',
+      water_tank_draining: 'Drain Water Tank',
+      water_tank_draining_desc: 'Drain dirty water from tank',
+      base_station_cleaning: 'Clean Station',
+      base_station_cleaning_desc: 'Clean the base station',
+      empty_water_tank: 'Empty Water Tank',
+      empty_water_tank_desc: 'Empty the water collection tank',
+    },
   },
 };
 

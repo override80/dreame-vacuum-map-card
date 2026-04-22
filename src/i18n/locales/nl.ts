@@ -249,5 +249,18 @@ export const nl: Translation = {
       fill_light: 'Bijverlichting',
       fill_light_desc: 'Bijverlichting gebruiken voor betere detectie',
     },
+    station_controls: {
+      title: 'Stationbediening',
+      self_clean: 'Zelfreiniging',
+      self_clean_desc: 'Start de dweilwascyclus',
+      manual_drying: 'Handmatig drogen',
+      manual_drying_desc: 'Start de dweildroogcyclus',
+      water_tank_draining: 'Watertank legen',
+      water_tank_draining_desc: 'Vuil water uit de tank laten lopen',
+      base_station_cleaning: 'Station reinigen',
+      base_station_cleaning_desc: 'Reinig het basisstation',
+      empty_water_tank: 'Watertank leegmaken',
+      empty_water_tank_desc: 'De wateropvangtank leegmaken',
+    },
   },
 };

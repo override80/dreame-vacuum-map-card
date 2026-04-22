@@ -251,5 +251,18 @@ export const de: Translation = {
       fill_light: 'Zusatzlicht',
       fill_light_desc: 'Zusatzlicht für bessere Erkennung nutzen',
     },
+    station_controls: {
+      title: 'Stationssteuerung',
+      self_clean: 'Selbstreinigung',
+      self_clean_desc: 'Wischmoppwaschzyklus starten',
+      manual_drying: 'Manuelle Trocknung',
+      manual_drying_desc: 'Wischmopp-Trockenzyklus starten',
+      water_tank_draining: 'Wassertank entleeren',
+      water_tank_draining_desc: 'Schmutzwasser aus dem Tank ablassen',
+      base_station_cleaning: 'Station reinigen',
+      base_station_cleaning_desc: 'Die Basisstation reinigen',
+      empty_water_tank: 'Wassertank leeren',
+      empty_water_tank_desc: 'Den Wassersammelbehälter leeren',
+    },
   },
 };
