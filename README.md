@@ -8,6 +8,7 @@ A modern, beautiful Home Assistant Lovelace card for controlling Dreame robot va
 - Support for **Room**, **All**, and **Zone** cleaning modes
 - Interactive map with room and zone selection
 - CleanGenius and Custom cleaning mode configuration
+- **Per-room customized cleaning**: Configure suction level, wetness, and cleaning cycles for each room individually
 - Real-time vacuum status and battery level
 - **Customizable Theming**: Light, dark, and fully customizable themes
 - **Internationalization (i18n)**: Multiple language support (English, German, Russian, Polish, Italian, Dutch, Spanish, Chinese, Hebrew) with RTL support
@@ -190,6 +191,11 @@ custom_theme:
 
 For more examples and complete theming documentation, see [THEMING.md](THEMING.md).
 
+## Per-Room Customized Cleaning
+
+The card supports per-room customized cleaning settings, allowing you to configure different suction levels, wetness, and cleaning cycles for each room.
+
+
 ## Internationalization (i18n)
 
 The card supports multiple languages. Currently available:
@@ -218,6 +224,7 @@ All user-facing text is translated, including:
 - Action buttons (Clean, Pause, Resume, Stop, Dock)
 - Toast notifications
 - Map overlays and instructions
+- Per-room customize settings
 - Error messages
 
 ### Adding New Languages
